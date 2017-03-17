@@ -1,34 +1,34 @@
 package main
 
 import (
+	"context"
+	"encoding/json"
 	"flag"
-	"gopkg.in/redis.v5"
+	"fmt"
+	"github.com/azer/logger"
 	pb "github.com/nsoushi/grpc-bidirectionalstreaming-demo/protobuf"
 	"google.golang.org/grpc"
-	"context"
+	"gopkg.in/redis.v5"
 	"io"
-	"fmt"
 	"time"
-	"encoding/json"
-	"github.com/azer/logger"
 )
 
 var (
 	serverHost string
 	serverPort int
 
-	redisHost string
-	redisPort int
+	redisHost    string
+	redisPort    int
 	redisChannel string
 
-	log *logger.Logger
-	requestLog *logger.Logger
+	log         *logger.Logger
+	requestLog  *logger.Logger
 	responseLog *logger.Logger
 )
 
 type QueueMessage struct {
-	ServiceName string          `json:"serviceName"`
-	Params      []int `json:"numbers"`
+	ServiceName string `json:"serviceName"`
+	Params      []int  `json:"numbers"`
 }
 
 func init() {
@@ -102,7 +102,7 @@ func main() {
 
 func pubSubConnection() (*redis.PubSub, error) {
 	client := redis.NewClient(&redis.Options{
-		Addr:     fmt.Sprintf("%s:%d", redisHost, redisPort),
+		Addr: fmt.Sprintf("%s:%d", redisHost, redisPort),
 	})
 	pubSub, err := client.Subscribe(redisChannel)
 	if err != nil {
@@ -124,7 +124,7 @@ func getRequests(msg *redis.Message) ([]pb.Request, error) {
 
 	requests := []pb.Request{
 		{q.ServiceName, fmt.Sprintf("%d", q.Params[0]), requestTime},
-		{q.ServiceName, fmt.Sprintf("%d", q.Params[1]),requestTime},
+		{q.ServiceName, fmt.Sprintf("%d", q.Params[1]), requestTime},
 	}
 
 	return requests, nil
