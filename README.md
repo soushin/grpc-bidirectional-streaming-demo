@@ -1,4 +1,4 @@
-# bidrectional grpc stremaing demo
+# Bidrectional grpc stremaing demo
 
 This repository just demo for using bidrectional grpc stremaing.
 
@@ -36,4 +36,4 @@ redis-cli
 127.0.0.1:6379> PUBLISH my_queue '{"serviceName" : "division", "numbers" : [10, 2]}'
 ```
 
-![demo](https://raw.githubusercontent.com/nsoushi/grpc-bidirectionalstreaming-demo/master/docs/demo.gif)
+![demo](https://raw.githubusercontent.com/nsoushi/grpc-bidirectional-streaming-demo/master/demo.gif)
