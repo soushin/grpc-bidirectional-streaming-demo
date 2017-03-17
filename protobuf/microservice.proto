@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package = "protobuf";
+package proto;
+
+service MicroService {
+  rpc MicroService (stream Request) returns (stream Response) {}
+}
+
+message Request {
+  string name = 1;
+  string message = 2;
+  string time = 3;
+}
+
+message Response {
+  string name = 1;
+  string message = 2;
+  string time = 3;
+}
