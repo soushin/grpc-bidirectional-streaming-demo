@@ -53,7 +53,11 @@ func main() {
 	defer pubSub.Close()
 
 	// gRPC connection
-	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", serverHost, serverPort), grpc.WithInsecure())
+	conn, err := grpc.Dial(
+		fmt.Sprintf("%s:%d", serverHost, serverPort),
+		grpc.WithInsecure(),
+		grpc.WithBackoffMaxDelay(time.Second),
+	)
 	if err != nil {
 		log.Error("Connection error: %v", err)
 	}
@@ -72,6 +76,7 @@ func main() {
 			}
 			if err != nil {
 				log.Error("Failed to receive a message : %v", err)
+				return
 			}
 			responseLog.Info("{serviceName:'%s', message:'%s', time:'%s'}", in.Name, in.Message, in.Time)
 		}
