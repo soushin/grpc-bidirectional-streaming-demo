@@ -1,6 +1,6 @@
 # Bidrectional grpc stremaing demo
 
-This repository just demo for using bidrectional grpc stremaing.
+This repository just demo of using bidrectional grpc stremaing.
 
 ![demo](https://raw.githubusercontent.com/nsoushi/grpc-bidirectional-streaming-demo/master/diagram.png)
 
