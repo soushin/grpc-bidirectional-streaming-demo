@@ -21,7 +21,7 @@ $ cp protobuf/microservice.proto server/grpc-server/src/main/proto/microservice.
 To start the server
 ```
 $ cd ./server/grpc-server
-$ gradle clean install
+$ ./gradlew installDist
 $ ./build/install/grpc-server/bin/microservice-server
 ```
 
