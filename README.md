@@ -28,7 +28,7 @@ $ ./build/install/grpc-server/bin/microservice-server
 To run the client
 ```
 $ cd ./client
-$ LOG=* go run clinet.go
+$ LOG=* go run client.go
 ```
 
 Then publish queue from redis(port is 6379)
