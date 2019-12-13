@@ -6,7 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/azer/logger"
-	pb "github.com/nsoushi/grpc-bidirectionalstreaming-demo/protobuf"
+	pb "github.com/soushin/grpc-bidirectional-streaming-demo/protobuf"
 	"google.golang.org/grpc"
 	"gopkg.in/redis.v5"
 	"io"
@@ -128,8 +128,8 @@ func getRequests(msg *redis.Message) ([]pb.Request, error) {
 	requestTime := fmt.Sprintf("%s", time.Now().Format("2006-01-02 15:04:05"))
 
 	requests := []pb.Request{
-		{q.ServiceName, fmt.Sprintf("%d", q.Params[0]), requestTime},
-		{q.ServiceName, fmt.Sprintf("%d", q.Params[1]), requestTime},
+		{Name: q.ServiceName, Message: fmt.Sprintf("%d", q.Params[0]), Time: requestTime},
+		{Name: q.ServiceName, Message: fmt.Sprintf("%d", q.Params[1]), Time: requestTime},
 	}
 
 	return requests, nil
