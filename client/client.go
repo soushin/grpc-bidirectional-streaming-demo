@@ -6,7 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/azer/logger"
-	pb "github.com/nsoushi/grpc-bidirectionalstreaming-demo/protobuf"
+	pb "github.com/soushin/grpc-bidirectional-streaming-demo/protobuf"
 	"google.golang.org/grpc"
 	"gopkg.in/redis.v5"
 	"io"
